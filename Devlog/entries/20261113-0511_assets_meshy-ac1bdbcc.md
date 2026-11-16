@@ -1,0 +1,9 @@
+# 2026-11-13 05:11 WIB — asset API operation
+
+- **Who / tool:** authorized asset worker via Meshy.
+- **Operation:** credit-check
+- **Endpoint path:** `/openapi/v1/balance`
+- **Safe task ID:** none confirmed
+- **Prompt excerpt:** refer to packet/source payload; binary data omitted
+- **Result:** Credit check passed
+- **Not verified:** model/rig/animation quality, engine integration and device performance.

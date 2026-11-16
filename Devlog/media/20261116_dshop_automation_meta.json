@@ -1,0 +1,11 @@
+﻿{"tests":[
+{"name":"JamGame.Meta.BuyEquipSpend","state":"Success"},
+{"name":"JamGame.Meta.CalendarClaimOncePerDay","state":"Success"},
+{"name":"JamGame.Meta.CalendarRewards","state":"Success"},
+{"name":"JamGame.Meta.CatalogDefaults","state":"Success"},
+{"name":"JamGame.Meta.DailyQuestsDeterministicAndBonus","state":"Success"},
+{"name":"JamGame.Meta.MissingSkinMeshFallsBack","state":"Success","warnings":["expected: missing NoSuchCharacter mesh logged, hero keeps default look"]},
+{"name":"JamGame.Meta.MissionProgressClaimReplace","state":"Success"},
+{"name":"JamGame.Meta.SaveRoundTrip","state":"Success"},
+{"name":"JamGame.Meta.StarSkinSpendsStars","state":"Success"}],
+"passed":9,"failed":0,"skipped":0,"total":9,"duration":0.248}

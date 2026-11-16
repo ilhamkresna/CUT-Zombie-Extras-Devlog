@@ -1,0 +1,11 @@
+- 2026-11-13T23:20:36 Submit OBS-04 repair reference to Meshy nano-banana-2-lite: One single smooth closed solid flying saucer toy, simple thick cream and silver flattened oval disk with a low cream dome and red rim, broad yellow and orange circular spots painted flat directly on the surface, no protruding bulbs, no holes, no gaps, no antenna, no spikes, no wires, no legs, no support. Cheerful chunky matte stylized mobile game asset, isolated three quarter view on white, no text or logos.
+- 2026-11-13T23:20:38 Submitted reference 01a1d5b6-0a0e-76e4-956b-4dd14879f244; poll original task.
+- 2026-11-13T23:20:55 Poll reference 01a1d5b6-0a0e-76e4-956b-4dd14879f244 IN_PROGRESS
+- 2026-11-13T23:21:11 Poll reference 01a1d5b6-0a0e-76e4-956b-4dd14879f244 SUCCEEDED
+- 2026-11-13T23:21:30 Reference visually audited: smooth closed saucer; submit v3 Meshy t2.5 smart topology target 2600, n1 texture, 15 credits.
+- 2026-11-13T23:21:33 Submitted 01a1d5b6-dcb1-7465-bad1-702db19551c4; Poll original task
+- 2026-11-13T23:21:53 Poll 01a1d5b6-dcb1-7465-bad1-702db19551c4 IN_PROGRESS 79
+- 2026-11-13T23:21:58 Poll 01a1d5b6-dcb1-7465-bad1-702db19551c4 SUCCEEDED 100
+- 2026-11-13T23:21:59 Downloaded v3 raw GLB/FBX 2670 triangles; visual and UE audit pending
+- 2026-11-13T23:22:28 Audited provider v3 thumbnail: coherent visible front; no obvious prior spikes/gaps; underside unverified. Updated ignored source manifest and registry patch.
+- 2026-11-13 Source checkpoint: reference v3 and model v3 were generated via Meshy; source thumbnails and hashes reviewed. Source handoff sent to editor; reports and ignored per-source registry patches written. UE validation remains open.

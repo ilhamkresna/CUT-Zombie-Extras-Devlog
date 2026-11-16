@@ -1,0 +1,30 @@
+# 2026-11-16 06:45 WIB — iscale — UI DPI scaling and safe area for portrait phones/tablets
+
+- **Who / tool:** worker "I-uiscale", Claude Sonnet 5.5 in Claude Code, unreal-mcp (live editor), Live Coding
+- **Task:** I-uiscale (orchestrator packet) · **Branch / commit:** main, no commit
+- **Asked for:** make UI fit 1080x2400, 1080x1920 and 1536x2048 portrait: ScaleToFit DPI rule, fix ApplyLayout pixel/DPI unit mismatch, enable Android display cutout; report Shop needs without editing Shop.
+- **Result:** Config/DefaultEngine.ini now has [/Script/Engine.UserInterfaceSettings] UIScaleRule=ScaleToFit, DesignScreenSize=(X=1080,Y=1920) and bUseDisplayCutout=True in the Android section. ApplyLayout converts the viewport to design units (pixels / viewport scale) for fonts, touch minimum and gaps. Title fits at 20:9, 16:9 and 4:3.
+- **Verified by:** ini read back; Live Coding succeeded with the edit (by another worker's compile); PIE screenshots of the Title at three portrait ratios (halved/reduced window sizes) viewed by me; no Android device
+- **What went wrong:** standalone game captures (Capture-Game.ps1) hung at startup and gave no images (about 15 min lost); a PowerShell screen grab captured the owner's chat window and was deleted at once; the 20:9 and 16:9 'before' images were not taken because the old and new rules give the same scale there (1.0 on 1080 wide); 4:3 before is an emulation, not a true old-config run; the first 16:9 shot showed the Shop, retaken
+- **Corrected by:** self
+- **Human decision needed or taken:** none
+- **Not done / not verified:** Shop at 20:9 and 4:3 not captured; no real 1536x2048 device or Android cutout test; cutout key affects only the packaged APK; Shop layout untouched (worker H); before images emulated; C++ patch ran in PIE only after patch_2
+- **Screenshot:** `Devlog/media/20261116_iscale_<before|after>_<ratio>.png`
+
+## Operation ledger (append while working)
+| Time WIB | Edit / generation / audit | Prompt/model/tool and safe task ID | Outputs / actual result | Verified stage / pending |
+|---|---|---|---|---|
+| 06:42 | Audit: read UE 5.8 UserInterfaceSettings.cpp CalculateScale + AndroidRuntimeSettings.h | grep, Claude Sonnet 5.5 | ScaleToFit = min(X/DesignX, Y/DesignY), no curve used. Cutout key = bUseDisplayCutout (AndroidRuntimeSettings, category APK Packaging) | source read |
+| 06:43 | Backup of Config/DefaultEngine.ini to scratchpad (outside repo) | bash cp | done | n/a |
+| 06:44 | C++ edit (not yet compiled): JamUIScreenBase.cpp ApplyLayout now sizes fonts/touch/gap from Viewport/GetViewportScale (DesignViewport); OnFallbackLayout still receives raw pixels; +include WidgetLayoutLibrary.h | Edit, Claude Sonnet 5.5, I-uiscale | file changed on disk (other workers' audio edits in same file are not mine) | pending Live Coding compile |
+| 06:45 | Standalone "before" captures via Saved lock + tools/ue/Capture-Game.ps1 (took Saved/unreal.lock as ISCALE, released later) | PowerShell, 3 runs of 540x1200 / 540x960 / 768x1024, plus custom wrapper with -JamShots | FAILED: game process (UnrealEditor.exe -game) stalls right after Turnkey SDK detection, no window, no screenshot; one 16x9 run produced a black PrintWindow frame (deleted). No usable before image | failed, nothing verified |
+| 06:57 | Config save: Project > Engine > UI via ConfigSettingsToolset.SetSectionProperties | unreal-mcp, UIScaleRule=ScaleToFit, DesignScreenSize=(1080,1920) | returned true; `[/Script/Engine.UserInterfaceSettings]` now on disk in Config/DefaultEngine.ini lines 93-95 | ini read back |
+| 06:57 | Config save: Project > Platforms > Android bUseDisplayCutout=True | unreal-mcp ConfigSettingsToolset | returned true; `bUseDisplayCutout=True` on disk in the AndroidRuntimeSettings section; KeyStore/KeyAlias/Debug* keys compared with a pre-save copy: all 8 present and unchanged (values never printed; the temporary copy was deleted) | ini read back |
+| 07:03 | Screen-copy capture attempt of the PIE window with PowerShell | PowerShell CopyFromScreen | FAILED and discarded: the PIE window was behind the Claude desktop app, the grab contained the owner's chat, so the PNG was deleted at once and never kept. Switched to in-game `Jam.ShotIn` typed into the editor Cmd box (SlateInspector.Type, same method G-cine used) | failed, file deleted |
+| 07:05 | After capture 20:9: PlayIn window 432x960 (editor user setting, not project config), StartPIE floating, `Jam.ShotIn 1 20261116_iscale_after_20x9` | unreal-mcp ConfigSettings + EditorApp + SlateInspector | Saved/Screenshots -> Devlog/media/20261116_iscale_after_20x9.png; Title screen fits, nothing clipped | PIE screenshot read by me |
+| 07:06 | Live Coding (not started by me): other workers' compiles (patch_1 07:04, patch_2 07:06, "Live coding succeeded" 07:06:15) picked up my 06:43 JamUIScreenBase.cpp edit; JamUIScreenBase.cpp.lc.obj built 07:05:25 contains the GetViewportScale reference, sarif has no error level. I never held Saved/orch_compile.lock | log + obj inspection | compiled cleanly, loaded in editor | compile verified; PIE after shots 4x3 taken after patch_2 |
+| 07:05-07:07 | After captures 20x9 (432x960 window), 16x9 (540x960), 4x3 (720x960) of the Title; first 16x9 attempt showed the Shop (renamed `_16x9_shop.png`) | PIE floating + Jam.ShotIn | Devlog/media/20261116_iscale_after_{20x9,16x9,4x3}.png and _after_16x9_shop.png | read by me; all fit |
+| 07:08 | Before capture 4x3: emulated the old ShortestSide result in the editor by temporarily saving UIScaleRule=ScaleToFit with DesignScreenSize=(1081,1442) (equals old scale 1.42 on 1536x2048), window 720x960; then restored (1080,1920) and PlayIn window back to 1280x720 | ConfigSettingsToolset | Devlog/media/20261116_iscale_before_4x3.png (tiny logo, START covering the hero); ini read back: ScaleToFit, (X=1080,Y=1920) | ini read back |
+| 07:09 | Cleanup: stopped PIE (IsPIERunning=false), released Saved/unreal.lock earlier, removed temp logs | n/a | no lock of mine remains | checked |
+
+No keys, account identifiers, signed URLs or private perk codes. Log self-edits are covered by this entry; do not recurse.
