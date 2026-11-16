@@ -1,0 +1,29 @@
+# 2026-11-16 11:25 WIB — Luna — TASK-082 world audit
+
+- **Who / tool:** Luna explorer, Codex GPT-6-Luna; PowerShell read-only source and process inspection
+- **Task:** TASK-082 · **Branch / commit:** shared workspace, commit not inspected
+- **Asked for:** Audit prior far-view/scale/obstacle work and diagnose why hazards only appear when close.
+- **Result:** Read-only audit started; findings pending.
+- **Verified by:** Source/document inspection only; no Unreal Editor, build, or runtime used.
+- **What went wrong:** None observed yet.
+- **Corrected by:** N/A.
+- **Human decision needed or taken:** None.
+- **Not done / not verified:** Native rendering, asset values/readbacks, runtime spawning and visual captures not verified.
+- **Screenshot:** none
+
+## Operation ledger (append while working)
+| Time WIB | Edit / generation / audit | Prompt/model/tool and safe task ID | Outputs / actual result | Verified stage / pending |
+|---|---|---|---|---|
+| 11:25 | Read CLAUDE.md, queue, TASK-082, architecture/spec, entry template; inventoried source names and Unreal/build processes | Codex GPT-6 / PowerShell / TASK-082 | Scope confirmed. No UnrealEditor/UBT/build process appeared in filtered process query. Initial broad rg included non-third-party paths and was too noisy; no third_party files were opened. | Static inspection only; lock state and editor state still need separate safe audit |
+| 11:27 | Located runtime hazard pool, activation and backdrop implementation; searched targeted source and found existing TASK-068/070 far-skyline system | Codex GPT-6 / PowerShell+rg / TASK-082 | Hazards are pooled/warmed separately from phase visibility; far backdrop has dedicated camera-following skyline bands and bNeverDistanceCull. Need narrow read to establish exact activation conditions and presets. | Static inspection only |
+| 11:31 | Sent evidence-backed hazard root cause to native writer and root; recorded owner expansion to bus/house rendering | Codex GPT-6 / collaboration messages / TASK-082 | Clarified phase-gated visibility (not actor spawn/culling); now auditing bus texture/source and house shading. | Audit pending |
+
+| 11:35 | Created read-only diagnosis report; measured bus texture dimensions; reviewed bus atlas, house source views and prior lighting logs | GPT-6-Luna / PowerShell, Pillow, file/image inspection / TASK-082 | Wrote tasks/TASK-082.explorer.md; confirmed City and Shuttle textures are 2048x2048; house defects/source-only limits recorded; no Unreal/build processes at check, lock not acquired | Static source/image review only; native behavior unverified |
+
+| 11:33 | Reviewed current uncommitted source diffs for hazard dormant visuals, authored obstacle scale placement, Shop preview, title hero listener and recap Main Menu | GPT-6-Luna / PowerShell git diff/source inspection / TASK-082 | Appended independent source review to tasks/TASK-082.explorer.md; found no phase/collision code changed, scale transforms and bounds align, caveats recorded for Dormant Crane/Laser posing, Fire omission, RealWidthCm override + scale contract, and editable WBP/native route proof | Source only; compile, asset readback, PIE and screenshots remain native integrator checks |
+| 11:35 | Corrected house source diagnosis after comparing front/rear orthographic source views; traced expected yaw math and population defaults | GPT-6-Luna / PowerShell, image/file/source review / TASK-082 | Reclassified blank reverse views and gable triangle as possible intentional film-set backside; report now identifies likely FrontYawDeg mismatch hypothesis with formula and native DA readback request | Source views and code reviewed; saved DA/runtime orientation not inspected |
+| 11:35 | Verified prior backdrop wiring from level setup script and prior native Glass Box log | GPT-6-Luna / rg and Devlog read / TASK-082 | Confirmed `w1_backdrop_level.py:157-162` places actor into L_Run; prior 20261115-0210 log records saved actor and runtime component counts | Prior native evidence only; current scene capture unavailable |
+| 11:38 | Rechecked live shared source diff after native writer replies; clarified WorldWidthCm contract comment is now explicit | GPT-6-Luna / PowerShell git diff / TASK-082 | No additional implementation changes detected in reviewed files; Unreal owner activity not interrupted | Read-only source review; native verification remains Terra-owned |
+| 11:50 | Located existing source-building paths and preview/reference sheets for owner request; verified filenames and canonical vs variant status | GPT-6-Luna / PowerShell rg / TASK-082 | Found 4 cleaned MAP-THEMES models with view_* previews, 8 VARIETY-047 raw model pairs and per-model reference images plus references_contact.jpg; no previews generated | Filesystem inventory only |
+| 11:56 | Read-only Bus3 source geometry, UV, material and production-mapping audit; inspected existing BaseColor atlas and cut report | GPT-6-Luna / PowerShell, Python GLB parser + Pillow, existing image viewer, rg / TASK-082 | Recorded dimensions, mesh stream counts, triangle checks, cut variant bounds and UE intended paths in `tasks/TASK-082.explorer.md`; did not render, import, or modify bus assets | Source/manifest/readback report evidence only; current UE slots, mip residency and in-game appearance remain unverified |
+| 12:03 | Matched all active TASK-082 L3 facade readback refs to source manifest; verified raw GLB/FBX, prepared FBX and L3 scale-FBX existence; checked exporter axis-preservation and existing preview camera | GPT-6-Luna / PowerShell, Python manifest/readback join, rg, existing image/file inspection / TASK-082 | Added actual source-batch groups/path patterns and corrected identity/front-axis boundary in `tasks/TASK-082.explorer.md`; 35 active rows map to B2/B3/B4/B10 Meshy sources, all matching files exist | Filesystem/source audit only; no per-asset front normal proven; Editor/runtime view required per JamArtSet.h |
